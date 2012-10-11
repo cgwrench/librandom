@@ -1,0 +1,25 @@
+Implement Marsaglia KISS generators
+Implement Mersenne Twister and related SFMT
+Implement WELL algorithm
+To check: should seeds be declared as static?
+Implement unit tests and automatic test script
+Implement seeding routines, taking take to avoid "bad" seeds
+Implement parallel streams and "jumping ahead"
+  - First need to implement state structures for each generator
+Possibly implement other RNGs, including Park-Miller and RANLUX
+
+Add support for Windows systems, using something like
+
+  #ifdef _MSC_VER
+
+  typedef __int32 int32_t;
+  typedef unsigned __int32 uint32_t;
+  typedef __int64 int64_t;
+  typedef unsigned __int64 uint64_t;
+
+  #else
+  #include <stdint.h>
+  #endif
+
+but more comprehensive.
+

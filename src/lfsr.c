@@ -1,3 +1,8 @@
+/* Copyright (C) 2012 C G Wrench. All rights reserved.
+ * This file is part of librandom and is released under the BSD 2-Clause 
+ * License. See the file COPYING for the full license text.
+ */
+
 /* LFSR Tausworthe generators of L'Ecuyer. */
 
 #include "lfsr.h"
