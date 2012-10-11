@@ -1,25 +1,39 @@
-Implement Marsaglia KISS generators
-Implement Mersenne Twister and related SFMT
-Implement WELL algorithm
-To check: should seeds be declared as static?
-Implement unit tests and automatic test script
-Implement seeding routines, taking take to avoid "bad" seeds
-Implement parallel streams and "jumping ahead"
-  - First need to implement state structures for each generator
-Possibly implement other RNGs, including Park-Miller and RANLUX
+#    -*- mode: org -*-
 
-Add support for Windows systems, using something like
+* Core features
+** DONE Implement Marsaglia KISS generators <2012-10-11 Thu>
+** Implement Mersenne Twister and related SFMT
+** Implement WELL algorithm
+** Implement seeding routines, taking take to avoid "bad" seeds
+** Implement unit tests and automatic test script
 
-  #ifdef _MSC_VER
+* Documentation
+** Contributing document
+** Library overview and function reference
+** Mathematics behind each generator
+** History of Marsaglia's generators (where did my implementations come from?)
 
-  typedef __int32 int32_t;
-  typedef unsigned __int32 uint32_t;
-  typedef __int64 int64_t;
-  typedef unsigned __int64 uint64_t;
+* Miscellaneous enhancements
+** Implement generators for floating point deviates
+** Implement generators for distributions other than uniform
+** To check: should seeds be declared as static?
+** Implement parallel streams and "jumping ahead"
+   First need to implement state structures for each generator
+** Possibly implement other RNGs, including Park-Miller and RANLUX
+** Add support for Windows systems
 
-  #else
-  #include <stdint.h>
-  #endif
+   Use something like:
 
-but more comprehensive.
+     #ifdef _MSC_VER
+
+     typedef __int32 int32_t;
+     typedef unsigned __int32 uint32_t;
+     typedef __int64 int64_t;
+     typedef unsigned __int64 uint64_t;
+
+     #else
+     #include <stdint.h>
+     #endif
+
+   but more comprehensive.
 
