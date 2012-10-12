@@ -37,3 +37,15 @@
 
    but more comprehensive.
 
+** Force inlining of core generators?
+
+   Using something like:
+
+     #ifdef _MSC_VER
+     #define INLINE __forceinline /* use __forceinline (VC++ specific) */
+     #else
+     #define INLINE inline        /* use standard inline */
+     #endif
+
+     INLINE void helloworld() { /* inline function body */ }
+

@@ -15,5 +15,6 @@
 *.exe
 *.out
 
-# Temporary excludes
+# Temporary excludes/includes
 doc/
+!.out

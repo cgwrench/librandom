@@ -75,7 +75,7 @@ uint64_t nz = UINT64_C(1234567890987654321);
 uint64_t nc = UINT64_C(123456123456123456);
 
 /* 64-bit combinational multiply-with-carry generator of Marsaglia. */
-uint64_t kiss64()
+uint64_t kiss64 (void)
 {
     uint64_t t;
 

@@ -8,9 +8,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <assert.h>
-#include <inttypes.h>
 
 #include "../kiss.h"
+
+#undef NDEBUG
 
 int main(void)
 {
@@ -61,3 +62,4 @@ int main(void)
 
   return EXIT_SUCCESS;
 }
+
