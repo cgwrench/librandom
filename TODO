@@ -2,10 +2,12 @@
 
 * Core features
 ** DONE Implement Marsaglia KISS generators <2012-10-11 Thu>
-** Implement Mersenne Twister and related SFMT
+** DONE Implement 32-bit Mersenne Twister <2012-10-12 Fri>
+** DONE Implement 64-bit Mersenne Twister <2012-10-13 Sat>
+** Implement 32- and 64-bit SFMT
 ** Implement WELL algorithm
 ** Implement seeding routines, taking take to avoid "bad" seeds
-** Implement unit tests and automatic test script
+** Implement remaining unit tests and automatic test script
 
 * Documentation
 ** Contributing document
