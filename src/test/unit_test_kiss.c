@@ -19,29 +19,50 @@ int main(void)
   uint64_t k;
 
   /* Test the 32-bit add-with-carry kiss generator. */
-  ax = 123456789; ay = 362436069; az = 21288629; aw = 14921776; ac = 0;
-  /* TODO seed_kiss32a(...) */
+  kiss32a_state_t * kiss32a_state;
+  kiss32a_state = (kiss32a_state_t*) malloc(sizeof(kiss32a_state_t));
+
+  kiss32a_state->mx = UINT32_C(123456789);
+  kiss32a_state->my = UINT32_C(362436069);
+  kiss32a_state->mz = UINT32_C(21288629);
+  kiss32a_state->mw = UINT32_C(14921776);
+  kiss32a_state->mc = UINT32_C(0);
+  /* TODO kiss32a_state_t * seed_kiss32a(kiss32a_t *state, uint32_t mx,
+       uint32_t my, uint32_t mz, uint32_t mw, uint32_t mc);
+     Populate state (malloc if required). If NULL pointer returned, not
+     successfull.
+  */
 
   /* Note, the following test corrects the original Usenet posting (Fortran and
-     C: United with a kiss) of Marsaglia, we use 100000, not 10000 iterations.
+     C: United with a kiss) of Marsaglia: we use 100000, not 10000 iterations.
    */
   for (int i = 0; i < 99996; i++)
-    j = kiss32a();
+    j = kiss32a(kiss32a_state);
 
   /* Test next four values for correctness */
-  assert(kiss32a() == UINT32_C( 199275006));
-  assert(kiss32a() == UINT32_C(  86473693));
-  assert(kiss32a() == UINT32_C(2209597521));
-  assert(kiss32a() == UINT32_C(1298124039));
+  assert(kiss32a(kiss32a_state) == UINT32_C( 199275006));
+  assert(kiss32a(kiss32a_state) == UINT32_C(  86473693));
+  assert(kiss32a(kiss32a_state) == UINT32_C(2209597521));
+  assert(kiss32a(kiss32a_state) == UINT32_C(1298124039));
 
 #ifdef UINT64_C
 
   /* Test the 32-bit multiply-with-carry kiss generator. */
-  mx = UINT32_C(123456789); my = UINT32_C(362436000);
-  mz = UINT32_C(521288629); mc = UINT32_C(7654321);
+  kiss32_state_t * kiss32_state;
+  kiss32_state = (kiss32_state_t*) malloc(sizeof(kiss32_state_t));
+
+  kiss32_state->mx = UINT32_C(123456789);
+  kiss32_state->my = UINT32_C(362436000);
+  kiss32_state->mz = UINT32_C(521288629);
+  kiss32_state->mc = UINT32_C(7654321);
+  /* TODO kiss32_state_t * seed_kiss32(kiss32_t *state, uint32_t mx,
+       uint32_t my, uint32_t mz, uint32_t mc);
+     Populate state (malloc if required). If NULL pointer returned, not
+     successfull.
+  */
 
   for (int i = 0; i < 1000000; i++)
-    j = kiss32();
+    j = kiss32(kiss32_state);
 
   /* The following test is from
      [simplerandom](https://bitbucket.org/cmcqueen1975/simplerandom/wiki/Home).
@@ -49,12 +70,21 @@ int main(void)
   assert(j == UINT32_C(1010846401));
 
   /* Test the 64-bit multiply-with-carry kiss generator. */
-  nx = UINT64_C(1066149217761810);    ny = UINT64_C(362436362436362436);
-  nz = UINT64_C(1234567890987654321); nc = UINT64_C(123456123456123456);
-  /* TODO seed_kiss64(...) */
+  kiss64_state_t * kiss64_state;
+  kiss64_state = (kiss64_state_t*) malloc(sizeof(kiss64_state_t));
+
+  kiss64_state->mx = UINT64_C(1066149217761810);
+  kiss64_state->my = UINT64_C(362436362436362436);
+  kiss64_state->mz = UINT64_C(1234567890987654321);
+  kiss64_state->mc = UINT64_C(123456123456123456);
+  /* TODO kiss64_state_t * seed_kiss64(kiss64_t *state, uint64_t mx,
+       uint64_t my, uint64_t mz, uint64_t mc);
+     Populate state (malloc if required). If NULL pointer returned, not
+     successfull.
+  */
 
   for (int i = 0; i < 100000000; i++)
-    k = kiss64();
+    k = kiss64(kiss64_state);
 
   assert(k == UINT64_C(1666297717051644203));
 
