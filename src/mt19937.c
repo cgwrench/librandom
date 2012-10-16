@@ -41,16 +41,26 @@
 
 /* Mersenne Twister MT19937ar generator of Matsumoto and Nishimura.
  *
- * Modified from the reference implementation, available from
- * <http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/MT2002/emt19937ar.html>,
+ * Modified from the reference implementations, available from
+ * <http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/MT2002/emt19937ar.html>
+ * and <http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/emt64.html>,
  * by Chris Wrench, 12/10/12, as follows:
- *  - Unused functions genrand_real1, genrand_real2, genrand_real2 and
- *    genrand_res53 removed and example test code moved to separate test
- *    file (see files under ./test/).
- *  - genrand_int32() renamed mt19937().
- *  - Integer type definitions replaced with C99 fixed width integers, as
- *    defined in <stdint.h>.
+ *
  *  - Principal computational lines left untouched.
+ *  - Integer type definitions replaced with C99 fixed width integers, as
+ *    defined in <stdint.h>. This eliminates the need for some bit masks
+ *    in the 32-bit Mersenne Twister.
+ *  - `genrand_int32` renamed `mt19937ar`.
+ *  - `init_genrand` renamed `init_mt19937ar` and `init_by_array`
+ *    renamed `init_mt19937ar_by_array`.
+ *  - `genrand_int64` renamed `mt19937_32`.
+ *  - `init_genrand64` renamed `init_mt19937_64` and `init_by_array64`
+ *    renamed `init_mt19937_64_by_array`.
+ *  - Unused 32-bit functions `genrand_int31`, `genrand_real1`, `genrand_real2`,
+ *    `genrand_real2` and `genrand_res53` removed and example test code moved
+ *    to separate test file (see files under ./test/).
+ *  - Unused 64-bit functions `genrand64_real1`, `genrand64_real2` and
+ *    `genrand64_real2` removed.
  *  - Still to do: define a state type (see below).
  */
 

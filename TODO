@@ -18,10 +18,39 @@
 * Miscellaneous enhancements
 ** Implement generators for floating point deviates
 ** Implement generators for distributions other than uniform
+
+   Include:
+     random_uniform(a, b)
+     random_triangular(low, high, mode)
+     random_betavariate(alpha, beta)
+     random_expovariate(lambd)
+     random_gammavariate(alpha, beta)
+     random_gaussian(mu, sigma)
+     random_lognormvariate(mu, sigma)
+     random_normalvariate(mu, sigma)
+     random_vonmisesvariate(mu, kappa)
+     random_paretovariate(alpha)
+     random_weibullvariate(alpha, beta)
+
+** Implement a function for drawing form dev/urandom.
 ** To check: should seeds be declared as static?
 ** Implement parallel streams and "jumping ahead"
    First need to implement state structures for each generator
 ** Possibly implement other RNGs, including Park-Miller and RANLUX
+** Function/macro prefixs to avoid namespace conflicts
+** Use extern "C" linkage in header files
+
+   This allows functions to be called directly from C++ programs. Use:
+
+     /* Header file foo.h */
+     #ifdef __cplusplus /* If this is a C++ compiler, use extern C linkage. */
+     extern "C" {
+     #endif
+
+     #ifdef __cplusplus /* ifdef __cplusplus */
+     }
+     #endif
+
 ** Add support for Windows systems
 
    Use something like:
