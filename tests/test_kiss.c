@@ -12,11 +12,11 @@
 #include "../src/kiss.h"
 
 #undef NDEBUG
+#define _unused(x) (void)(x)
 
 int main(void)
 {
   uint32_t j;
-  uint64_t k;
 
   /* Test the 32-bit add-with-carry kiss generator. */
   kiss32a_state_t * kiss32a_state;
@@ -38,7 +38,7 @@ int main(void)
    */
   for (int i = 0; i < 99996; i++)
   {
-    j = kiss32a(kiss32a_state);
+    _unused(j = kiss32a(kiss32a_state));
   }
 
   /* Test next four values for correctness */
@@ -48,6 +48,7 @@ int main(void)
   assert(kiss32a(kiss32a_state) == UINT32_C(1298124039));
 
 #ifdef UINT64_C
+  uint64_t k;
 
   /* Test the 32-bit multiply-with-carry kiss generator. */
   kiss32_state_t * kiss32_state;
@@ -65,7 +66,7 @@ int main(void)
 
   for (int i = 0; i < 1000000; i++)
   {
-    j = kiss32(kiss32_state);
+    _unused(j = kiss32(kiss32_state));
   }
 
   /* The following test is from simplerandom, see
@@ -88,7 +89,7 @@ int main(void)
 
   for (int i = 0; i < 100000000; i++)
   {
-    k = kiss64(kiss64_state);
+    _unused(k = kiss64(kiss64_state));
   }
 
   assert(k == UINT64_C(1666297717051644203));

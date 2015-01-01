@@ -12,6 +12,7 @@
 #include "../src/lfsr.h"
 
 #undef NDEBUG
+#define _unused(x) (void)(x)
 
 #define SEED32 UINT32_C(12345)
 #define SEED64 UINT64_C(12345987654321)
@@ -35,7 +36,7 @@ int main(void)
 
   for (int i = 0; i < 1000000; i++)
   {
-    k = taus88(taus88_state);
+    _unused(k = taus88(taus88_state));
   }
 
   assert(k == UINT32_C(3639585634));
@@ -54,7 +55,7 @@ int main(void)
 
   for (int i = 0; i < 1000000; i++)
   {
-    k = lfsr113(lfsr113_state);
+    _unused(k = lfsr113(lfsr113_state));
   }
 
   assert(k == UINT32_C(1205173390));
@@ -77,7 +78,7 @@ int main(void)
 
   for (int i = 0; i < 1000000; i++)
   {
-    j = lfsr258(lfsr258_state);
+    _unused(j = lfsr258(lfsr258_state));
   }
 
   assert(j == UINT64_C(2366542785984680056));

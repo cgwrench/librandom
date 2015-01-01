@@ -17,11 +17,11 @@
 #undef NDEBUG
 
 /* File containing expected output for the first 1000 calls to mt19937ar(). */
-const char EXPECTED_OUTPUT_32[] = "test_mt19937ar.output";
+const char EXPECTED_OUTPUT_32[] = "tests/test_mt19937ar.output";
 
 #ifdef UINT64_C
 /* File containing expected output for the first 1000 calls to mt19937_64(). */
-const char EXPECTED_OUTPUT_64[] = "test_mt19937_64.output";
+const char EXPECTED_OUTPUT_64[] = "tests/test_mt19937_64.output";
 #endif /* ifdef UINT64_C */
 
 int main(void)
