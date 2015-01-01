@@ -1,4 +1,4 @@
-#    -*- mode: org -*-
+# -*- mode: org -*-
 
 * Core features
 ** DONE Implement Marsaglia KISS generators <2012-10-11 Thu>
@@ -6,8 +6,10 @@
 ** DONE Implement 64-bit Mersenne Twister <2012-10-13 Sat>
 ** Implement 32- and 64-bit SFMT
 ** Implement WELL algorithm
+** Implement Xorshift generators
 ** Implement seeding routines, taking take to avoid "bad" seeds
 ** Implement remaining unit tests and automatic test script
+** Remove file system dependency from Mersenne Twister tests
 
 * Documentation
 ** Contributing document
@@ -32,11 +34,10 @@
      random_paretovariate(alpha)
      random_weibullvariate(alpha, beta)
 
-** Implement a function for drawing form dev/urandom.
+** Implement a function for drawing from dev/urandom.
 ** To check: should seeds be declared as static?
 ** Implement parallel streams and "jumping ahead"
    First need to implement state structures for each generator
-** Possibly implement other RNGs, including Park-Miller and RANLUX
 ** Function/macro prefixs to avoid namespace conflicts
 ** Use extern "C" linkage in header files
 
