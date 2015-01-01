@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include <assert.h>
 
-#include "../lfsr.h"
+#include "../src/lfsr.h"
 
 #undef NDEBUG
 
@@ -18,7 +18,6 @@
 
 int main(void)
 {
-  int i;
   uint32_t k;
 
   /* Test the 32-bit 3 component LFSR generator. */
@@ -31,11 +30,13 @@ int main(void)
   /* TODO tauss88_state_t * seed_taus88(tauss88_t *state, uint32_t s1,
        uint32_t s2, uint32_t s3);
      Populate state (malloc if required). If NULL pointer returned, not
-     successfull.
+     successful.
   */
 
-  for (i = 0; i < 1000000; i++)
+  for (int i = 0; i < 1000000; i++)
+  {
     k = taus88(taus88_state);
+  }
 
   assert(k == UINT32_C(3639585634));
 
@@ -48,11 +49,13 @@ int main(void)
   /* TODO lfsr113_state_t * seed_lfsr113(lfsr113_t *state, uint32_t s1,
        uint32_t s2, uint32_t s3, uint32_t s4);
      Populate state (malloc if required). If NULL pointer returned, not
-     successfull.
+     successful.
   */
 
-  for (i = 0; i < 1000000; i++)
+  for (int i = 0; i < 1000000; i++)
+  {
     k = lfsr113(lfsr113_state);
+  }
 
   assert(k == UINT32_C(1205173390));
 
@@ -66,15 +69,16 @@ int main(void)
   lfsr258_state->s1 = SEED64; lfsr258_state->s2 = SEED64;
   lfsr258_state->s3 = SEED64; lfsr258_state->s4 = SEED64;
   lfsr258_state->s5 = SEED64;
-
   /* TODO lfsr258_state_t * seed_lfsr258(lfsr258_t *state, uint64_t s1,
        uint64_t s2, uint64_t s3, uint64_t s4, uint64_t s5);
      Populate state (malloc if required). If NULL pointer returned, not
-     successfull.
+     successful.
   */
 
-  for (i = 0; i < 1000000; i++)
+  for (int i = 0; i < 1000000; i++)
+  {
     j = lfsr258(lfsr258_state);
+  }
 
   assert(j == UINT64_C(2366542785984680056));
 

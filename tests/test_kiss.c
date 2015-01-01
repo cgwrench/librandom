@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include <assert.h>
 
-#include "../kiss.h"
+#include "../src/kiss.h"
 
 #undef NDEBUG
 
@@ -30,14 +30,16 @@ int main(void)
   /* TODO kiss32a_state_t * seed_kiss32a(kiss32a_t *state, uint32_t mx,
        uint32_t my, uint32_t mz, uint32_t mw, uint32_t mc);
      Populate state (malloc if required). If NULL pointer returned, not
-     successfull.
+     successful.
   */
 
   /* Note, the following test corrects the original Usenet posting (Fortran and
      C: United with a kiss) of Marsaglia: we use 100000, not 10000 iterations.
    */
   for (int i = 0; i < 99996; i++)
+  {
     j = kiss32a(kiss32a_state);
+  }
 
   /* Test next four values for correctness */
   assert(kiss32a(kiss32a_state) == UINT32_C( 199275006));
@@ -58,15 +60,16 @@ int main(void)
   /* TODO kiss32_state_t * seed_kiss32(kiss32_t *state, uint32_t mx,
        uint32_t my, uint32_t mz, uint32_t mc);
      Populate state (malloc if required). If NULL pointer returned, not
-     successfull.
+     successful.
   */
 
   for (int i = 0; i < 1000000; i++)
+  {
     j = kiss32(kiss32_state);
+  }
 
-  /* The following test is from
-     [simplerandom](https://bitbucket.org/cmcqueen1975/simplerandom/wiki/Home).
-   */
+  /* The following test is from simplerandom, see
+   * https://bitbucket.org/cmcqueen1975/simplerandom/wiki/Home */
   assert(j == UINT32_C(1010846401));
 
   /* Test the 64-bit multiply-with-carry kiss generator. */
@@ -80,11 +83,13 @@ int main(void)
   /* TODO kiss64_state_t * seed_kiss64(kiss64_t *state, uint64_t mx,
        uint64_t my, uint64_t mz, uint64_t mc);
      Populate state (malloc if required). If NULL pointer returned, not
-     successfull.
+     successful.
   */
 
   for (int i = 0; i < 100000000; i++)
+  {
     k = kiss64(kiss64_state);
+  }
 
   assert(k == UINT64_C(1666297717051644203));
 
